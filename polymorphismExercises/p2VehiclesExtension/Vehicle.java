@@ -1,4 +1,4 @@
-package oop.polymorphismExercises.p1Vehicles;
+package oop.polymorphismExercises.p2VehiclesExtension;
 
 import java.text.DecimalFormat;
 
@@ -6,10 +6,12 @@ public class Vehicle {
 
     protected double fuelQuantity;
     protected double fuelConsumption;
+    protected int tankCapacity;
 
-    public Vehicle(double fuelQuantity, double fuelConsumption) {
+    public Vehicle(double fuelQuantity, double fuelConsumption, int tankCapacity) {
         this.fuelQuantity = fuelQuantity;
         this.fuelConsumption = fuelConsumption;
+        this.tankCapacity = tankCapacity;
     }
 
     public double getFuelQuantity() {
@@ -24,6 +26,7 @@ public class Vehicle {
     }
 
     public String driving(Double distance) {
+
         if (this.fuelQuantity < this.fuelConsumption * distance) {
             return String.format("%s needs refueling", this.getClass().getSimpleName());
         }
@@ -31,6 +34,7 @@ public class Vehicle {
         DecimalFormat decimalFormat = new DecimalFormat("##.##");
 
         return String.format("%s travelled %s km", this.getClass().getSimpleName(), decimalFormat.format(distance));
+
     }
 
     public void refueling(double liters) {
@@ -40,7 +44,15 @@ public class Vehicle {
             liters = liters * 0.95;
         }
 
-        this.fuelQuantity = this.fuelQuantity + liters;
+        if (liters <= 0) {
+            System.out.println("Fuel must be a positive number");
+        } else {
+            if (tankCapacity < this.fuelQuantity + liters) {
+                System.out.println("Cannot fit fuel in tank");
+            } else {
+                this.fuelQuantity = this.fuelQuantity + liters;
+            }
+        }
     }
 
     public String fuelLeft(double fuelQuantity) {
