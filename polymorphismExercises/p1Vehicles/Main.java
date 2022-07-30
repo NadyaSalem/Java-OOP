@@ -15,8 +15,8 @@ public class Main {
 
         Map<String, Vehicle> vehicles = new LinkedHashMap<>();
 
-        vehicles.put("oop.polymorphismExercises.p2VehiclesExtension.Car", car);
-        vehicles.put("oop.polymorphismExercises.p2VehiclesExtension.Truck", truck);
+        vehicles.put("Car", car);
+        vehicles.put("Truck", truck);
 
         while (inputLines-- > 0) {
 
