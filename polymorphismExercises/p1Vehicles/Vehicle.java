@@ -35,11 +35,6 @@ public class Vehicle {
 
     public void refueling(double liters) {
 
-        if (this instanceof Truck) {
-            // truck has a tiny hole in its tank and gets only 95% of the given fuel
-            liters = liters * 0.95;
-        }
-
         this.fuelQuantity = this.fuelQuantity + liters;
     }
 
